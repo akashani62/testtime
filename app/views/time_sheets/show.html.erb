@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Clock in:</strong>
+  <%= @time_sheet.clock_in %>
+</p>
+
+<p>
+  <% unless @time_sheet.clock_out.nil? %>
+    <p>
+      <strong>Clock out:</strong>
+      <%= @time_sheet.clock_out %>
+    </p>
+    <strong>Total time:</strong>
+    <%= ActiveSupport::Duration.build(@time_sheet.clock_out - @time_sheet.clock_in).parts %>
+    </p>
+  <% end %>
+
+
+<%= link_to 'Edit', edit_time_sheet_path(@time_sheet) %> |
+<%= link_to 'Back', time_sheets_path %>

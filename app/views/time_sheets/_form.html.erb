@@ -1,0 +1,32 @@
+<%= form_with(model: time_sheet) do |form| %>
+  <% if time_sheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(time_sheet.errors.count, "error") %> prohibited this time_sheet from being saved:</h2>
+
+      <ul>
+        <% time_sheet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+  <% unless time_sheet.clock_out.nil? %>
+    <div class="field">
+      <%= form.label :clock_in %>
+      <%= form.datetime_select :clock_in %>
+    </div>
+    <div class="field">
+      <%= form.label :clock_out %>
+      <%= form.datetime_select :clock_out %>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+    <%= form.submit "Clock In" %>
+  </div>
+<% end %>

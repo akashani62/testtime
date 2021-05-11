@@ -1,0 +1,3 @@
+class TimeSheet < ApplicationRecord
+
+end
