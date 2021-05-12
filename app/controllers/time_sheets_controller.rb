@@ -38,7 +38,7 @@ class TimeSheetsController < ApplicationController
   def clock_out
     respond_to do |format|
       if @time_sheet.update(clock_out: DateTime.now.localtime)
-        format.html { redirect_to @time_sheet, notice: "Time sheet was successfully updated." }
+        format.html { redirect_to @time_sheet, notice: "Time sheet was clocked out." }
         format.json { render :show, status: :ok, location: @time_sheet }
       else
         format.html { render :edit, status: :unprocessable_entity }

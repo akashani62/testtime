@@ -3,6 +3,7 @@ require "test_helper"
 class TimeSheetsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @time_sheet = time_sheets(:one)
+    @time_sheet2 = time_sheets(:two)
   end
 
   test "should get index" do
@@ -23,13 +24,13 @@ class TimeSheetsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to time_sheet_url(TimeSheet.last)
   end
 
-  # focus
+
   test "should clock out time_sheet" do
     assert_no_difference('TimeSheet.count') do
-      patch clock_out_url(time_sheets(:two)), params: { time_sheet: {  clock_out: DateTime.now.localtime } }
+      patch clock_out_url(@time_sheet2)
     end
-
-    assert_redirected_to time_sheet_url(time_sheets(:two))
+    assert_redirected_to time_sheet_url(@time_sheet2)
+    puts @time_sheet2.inspect
   end
 
 

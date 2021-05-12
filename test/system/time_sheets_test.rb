@@ -13,34 +13,34 @@ class TimeSheetsTest < ApplicationSystemTestCase
   test "creating a Time sheet" do
     visit time_sheets_url
     click_on "New Time Sheet"
-
-    # fill_in "Clock in", with: @time_sheet.clock_in
-    # check "Started" if @time_sheet.started
     click_on "Clock In"
 
     assert_text "Time sheet was successfully created"
     click_on "Back"
   end
 
-  # focus
   test "updating a Time sheet" do
-    # binding.pry
-    visit time_sheets_url#(@time_sheet)
+    visit time_sheets_url(@time_sheet)
     click_on "Edit", match: :first
-    # binding.pry
-    # save_and_open_page
-    # puts "\n\n\n\n\n\n\n\n\n\n\n"
-    # puts "here"
-    # # puts find_field('Clock in', disabled: :true)
-    # puts "here"
-    #
-    # puts "\n\n\n\n\n\n\n\n\n\n\n"
+    select "2025", from: 'time_sheet[clock_in(1i)]'
+    select "May", from: 'time_sheet[clock_in(2i)]'
+    select "19", from: 'time_sheet[clock_in(3i)]'
+    select "10", from: 'time_sheet[clock_in(4i)]'
+    select "20", from: 'time_sheet[clock_in(5i)]'
 
-    # fill_in "Clock in", with: @time_sheet.clock_in
+    select "2026", from: 'time_sheet[clock_out(1i)]'
+    select "May", from: 'time_sheet[clock_out(2i)]'
+    select "19", from: 'time_sheet[clock_out(3i)]'
+    select "10", from: 'time_sheet[clock_out(4i)]'
+    select "20", from: 'time_sheet[clock_out(5i)]'
+
     click_on "Clock In"
-    #
     assert_text "Time sheet was successfully updated"
-    # click_on "Back"
+    assert_text("{:months=>11, :weeks=>4, :days=>2, :hours=>4, :minutes=>39, :seconds=>54.0}")
+
+    click_on "Back"
+    click_on "Clock out"
+    assert_text "Time sheet was clocked out."
   end
 
   test "destroying a Time sheet" do

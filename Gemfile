@@ -52,6 +52,7 @@ group :development do
   gem 'minitest-reporters'
 
   gem 'guard-rails', require: false
+  gem 'launchy'
 
 end
 
@@ -63,6 +64,8 @@ group :test do
   gem 'webdrivers'
 
 end
+
+gem 'autoprefixer-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
