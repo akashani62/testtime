@@ -26,7 +26,7 @@ class TimeSheetsControllerTest < ActionDispatch::IntegrationTest
   # focus
   test "should clock out time_sheet" do
     assert_no_difference('TimeSheet.count') do
-      patch clock_out_url(time_sheets(:two)), params: { time_sheet: {  clock_out: @time_sheet.clock_out } }
+      patch clock_out_url(time_sheets(:two)), params: { time_sheet: {  clock_out: DateTime.now.localtime } }
     end
 
     assert_redirected_to time_sheet_url(time_sheets(:two))

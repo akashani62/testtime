@@ -14,11 +14,13 @@
 
 
 
+  <div class="field">
+    <%= form.label :clock_in %>
+    <%= form.datetime_select :clock_in %>
+  </div>
+
   <% unless time_sheet.clock_out.nil? %>
-    <div class="field">
-      <%= form.label :clock_in %>
-      <%= form.datetime_select :clock_in %>
-    </div>
+
     <div class="field">
       <%= form.label :clock_out %>
       <%= form.datetime_select :clock_out %>
