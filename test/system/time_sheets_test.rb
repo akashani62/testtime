@@ -28,15 +28,15 @@ class TimeSheetsTest < ApplicationSystemTestCase
     select "10", from: 'time_sheet[clock_in(4i)]'
     select "20", from: 'time_sheet[clock_in(5i)]'
 
-    select "2026", from: 'time_sheet[clock_out(1i)]'
+    select "2025", from: 'time_sheet[clock_out(1i)]'
     select "May", from: 'time_sheet[clock_out(2i)]'
     select "19", from: 'time_sheet[clock_out(3i)]'
-    select "10", from: 'time_sheet[clock_out(4i)]'
+    select "11", from: 'time_sheet[clock_out(4i)]'
     select "20", from: 'time_sheet[clock_out(5i)]'
 
     click_on "Clock In"
     assert_text "Time sheet was successfully updated"
-    assert_text("{:months=>11, :weeks=>4, :days=>2, :hours=>4, :minutes=>39, :seconds=>54.0}")
+    assert_text(":hours=>1")
 
     click_on "Back"
     click_on "Clock out"
