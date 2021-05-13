@@ -1,9 +1,12 @@
 require "test_helper"
 
 class TimeSheetsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
     @time_sheet = time_sheets(:one)
     @time_sheet2 = time_sheets(:two)
+    sign_in users(:one)
+
   end
 
   test "should get index" do
@@ -25,7 +28,9 @@ class TimeSheetsControllerTest < ActionDispatch::IntegrationTest
   end
 
 
+  # focus
   test "should clock out time_sheet" do
+    sign_in users(:two)
     assert_no_difference('TimeSheet.count') do
       patch clock_out_url(@time_sheet2)
     end

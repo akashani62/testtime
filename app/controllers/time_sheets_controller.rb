@@ -3,7 +3,7 @@ class TimeSheetsController < ApplicationController
 
   # GET /time_sheets or /time_sheets.json
   def index
-    @time_sheets = TimeSheet.all
+    @time_sheets = current_user.time_sheets.all
   end
 
   # GET /time_sheets/1 or /time_sheets/1.json
@@ -12,7 +12,7 @@ class TimeSheetsController < ApplicationController
 
   # GET /time_sheets/new
   def new
-    @time_sheet = TimeSheet.new
+    @time_sheet = current_user.time_sheets.new
   end
 
   # GET /time_sheets/1/edit
@@ -22,7 +22,7 @@ class TimeSheetsController < ApplicationController
   # POST /time_sheets or /time_sheets.json
   def create
     # byebug
-    @time_sheet = TimeSheet.new(clock_in: DateTime.now.localtime)
+    @time_sheet = current_user.time_sheets.new(clock_in: DateTime.now.localtime)
 
     respond_to do |format|
       if @time_sheet.save
@@ -72,7 +72,7 @@ class TimeSheetsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_time_sheet
-      @time_sheet = TimeSheet.find(params[:id])
+      @time_sheet = current_user.time_sheets.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

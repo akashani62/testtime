@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'time_sheets#index'
   resources :time_sheets
   match "time_sheets/:id/clock_out", to: 'time_sheets#clock_out', as: "clock_out", via: :patch
