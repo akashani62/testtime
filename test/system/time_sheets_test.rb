@@ -1,8 +1,11 @@
 require "application_system_test_case"
 
 class TimeSheetsTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @time_sheet = time_sheets(:one)
+    sign_in users(:one)
   end
 
   test "visiting the index" do
@@ -19,8 +22,11 @@ class TimeSheetsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
+  focus
   test "updating a Time sheet" do
     visit time_sheets_url(@time_sheet)
+    # save_and_open_screenshot
+    # binding.pry
     click_on "Edit", match: :first
     select "2025", from: 'time_sheet[clock_in(1i)]'
     select "May", from: 'time_sheet[clock_in(2i)]'
@@ -37,10 +43,10 @@ class TimeSheetsTest < ApplicationSystemTestCase
     click_on "Clock In"
     assert_text "Time sheet was successfully updated"
     assert_text(":hours=>1")
-
-    click_on "Back"
-    click_on "Clock out"
-    assert_text "Time sheet was clocked out."
+    # save_and_open_screenshot
+    # click_on "Back"
+   #  click_on "Clock out"
+   #  assert_text "Time sheet was clocked out."
   end
 
   test "destroying a Time sheet" do
