@@ -30,7 +30,6 @@ class TimeSheetsControllerTest < ActionDispatch::IntegrationTest
       patch clock_out_url(@time_sheet2)
     end
     assert_redirected_to time_sheet_url(@time_sheet2)
-    puts @time_sheet2.inspect
   end
 
 

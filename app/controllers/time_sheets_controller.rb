@@ -77,10 +77,6 @@ class TimeSheetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def time_sheet_params
-      # puts "\n\n\n\n"
- #      puts params
- #      puts "\n\n\n\n"
-
       params.require(:time_sheet).permit(:clock_in, :clock_out)
     end
 end
