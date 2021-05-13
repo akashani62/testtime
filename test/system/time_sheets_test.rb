@@ -22,7 +22,6 @@ class TimeSheetsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  focus
   test "updating a Time sheet" do
     visit time_sheets_url(@time_sheet)
     # save_and_open_screenshot
@@ -44,9 +43,9 @@ class TimeSheetsTest < ApplicationSystemTestCase
     assert_text "Time sheet was successfully updated"
     assert_text(":hours=>1")
     # save_and_open_screenshot
-    # click_on "Back"
-   #  click_on "Clock out"
-   #  assert_text "Time sheet was clocked out."
+    click_on "Back"
+    click_on "Clock out"
+    assert_text "Time sheet was clocked out."
   end
 
   test "destroying a Time sheet" do
