@@ -17,7 +17,7 @@
         <td><%= time_sheet.clock_in %></td>
 
         <td><%= link_to 'Show', time_sheet %></td>
-        <td><%= link_to 'Edit', edit_time_sheet_path(time_sheet) %></td>
+        <td><%= link_to 'Edit', edit_time_sheet_path(time_sheet), id: "edit-link-show" %></td>
         <td><%= link_to 'Destroy', time_sheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% if time_sheet.clock_out.nil? %>
           <td><%= form_for time_sheet, url: clock_out_path(time_sheet) do |f| %>

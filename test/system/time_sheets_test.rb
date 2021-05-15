@@ -22,11 +22,16 @@ class TimeSheetsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
+  # focus
   test "updating a Time sheet" do
     visit time_sheets_url(@time_sheet)
     # save_and_open_screenshot
     # binding.pry
-    click_on "Edit", match: :first
+    # within('') do
+ #      click_on "Edit", match: :first
+ #    end
+    first("#edit-link-show").click
+    # save_and_open_screenshot
     select "2025", from: 'time_sheet[clock_in(1i)]'
     select "May", from: 'time_sheet[clock_in(2i)]'
     select "19", from: 'time_sheet[clock_in(3i)]'
