@@ -46,7 +46,7 @@ class TimeSheetsTest < ApplicationSystemTestCase
 
     click_on "Clock In"
     assert_text "Time sheet was successfully updated"
-    assert_text(":hours=>1")
+    assert_text("hours: 1")
     # save_and_open_screenshot
     click_on "Back"
     click_on "Clock out"

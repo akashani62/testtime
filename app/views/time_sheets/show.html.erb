@@ -12,7 +12,9 @@
       <%= @time_sheet.clock_out %>
     </p>
     <strong>Total time:</strong>
-    <%= ActiveSupport::Duration.build(@time_sheet.clock_out - @time_sheet.clock_in).parts %>
+    <% ActiveSupport::Duration.build(@time_sheet.clock_out - @time_sheet.clock_in).parts.each_pair do |k,v| %>
+      <%= k %>: <%= v %>|
+    <% end %>
     </p>
   <% end %>
 
